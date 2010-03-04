@@ -1,10 +1,10 @@
-import sys
+import sys, time
 from amqplib import client_0_8 as amqp
 
 exchange = sys.argv[1]
 queue = sys.argv[2]
 routing_key = sys.argv[3]
-message_count = sys.argv[4]
+message_count = int(sys.argv[4])
 
 conn = amqp.Connection(host="localhost:5672 ", userid="guest", password="guest", virtual_host="/", insist=False)
 chan = conn.channel()
