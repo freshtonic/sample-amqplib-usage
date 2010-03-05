@@ -17,7 +17,7 @@ chan = conn.channel()
 
 for e in exchanges:
     chan.exchange_declare(exchange=e, type="direct", durable=True, auto_delete=False)
-    for priority in range(0,10):    
+    for priority in [10,9,8,7,6,5,4,3,2,1]:    
         queue = e + "." + str(priority)
         chan.queue_declare(queue=queue, durable=True, exclusive=False, auto_delete=False)
         chan.queue_bind(queue=queue, exchange=e, routing_key=queue)
